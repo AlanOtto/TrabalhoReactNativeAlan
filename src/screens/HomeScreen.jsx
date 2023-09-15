@@ -4,23 +4,25 @@ import { View, Text, TouchableOpacity, StyleSheet, ImageBackground } from 'react
 const HomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
-      source={require('../assets/background.jpg')} // Adicione sua imagem de fundo
+      source={require('./taylorNotreDame.jpg')} // Substitua pelo caminho da sua imagem de fundo
       style={styles.background}
     >
       <View style={styles.container}>
         <Text style={styles.heading}>Bem-vindo à Tela Inicial</Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('JediInfo')}
-        >
-          <Text style={styles.buttonText}>Ver informações de Jedis</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
           onPress={() => navigation.navigate('CountryList')}
         >
           <Text style={styles.buttonText}>Ver informações de Países</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('JediInfo')}
+        >
+          <Text style={styles.buttonText}>Ver informações de Jedis</Text>
+        </TouchableOpacity>
+
       </View>
     </ImageBackground>
   );

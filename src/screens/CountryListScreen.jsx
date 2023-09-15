@@ -8,7 +8,6 @@ const CountryListScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    // Faz uma solicitação à API para obter a lista de países.
     axios.get('https://restcountries.com/v3.1/all')
       .then((response) => {
         setCountries(response.data);
@@ -19,7 +18,6 @@ const CountryListScreen = () => {
   }, []);
 
   const handleCountryPress = (country) => {
-    // Navega para a tela de detalhes do país e passa os detalhes do país como parâmetro.
     navigation.navigate('CountryDetail', { country });
   };
 
@@ -27,15 +25,17 @@ const CountryListScreen = () => {
     <TouchableOpacity onPress={() => handleCountryPress(item)}>
       <View style={styles.card}>
         <Image
-          source={{ uri: item.flags[0] }}
+          source={{ uri: item.flags["png"] }}
           style={styles.flag}
         />
         <View>
           <Text style={styles.countryName}>{item.name.common}</Text>
+          <Text style={styles.capital}>{item.capital && `Capital: ${item.capital}`}</Text>
         </View>
       </View>
     </TouchableOpacity>
   );
+  
 
   return (
     <View style={styles.container}>
@@ -72,15 +72,18 @@ const styles = StyleSheet.create({
   flag: {
     width: 60,
     height: 40,
+    resizeMode: 'contain',
     marginRight: 20,
   },
   countryName: {
     fontSize: 18,
     fontWeight: 'bold',
   },
-  label: {
-    fontWeight: 'bold',
+  capital: {
+    fontSize: 16,
+    color: '#777', 
   },
+
 });
 
 export default CountryListScreen;

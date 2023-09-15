@@ -7,10 +7,7 @@ const CountryDetailScreen = ({ route }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{country.name.common}</Text>
-      <Text><Text style={styles.label}>Capital:</Text> {country.capital[0]}</Text>
-      {country.languages && Object.keys(country.languages).length > 0 && (
-        <Text><Text style={styles.label}>Língua:</Text> {Object.values(country.languages)[0].name}</Text>
-      )}
+      <Text><Text style={styles.label}>Continente:</Text> {country.region}</Text>
       <Text><Text style={styles.label}>População:</Text> {country.population}</Text>
       <Text><Text style={styles.label}>Área:</Text> {country.area} km²</Text>
       <Text><Text style={styles.label}>Moeda:</Text> {country.currencies[Object.keys(country.currencies)[0]].name}</Text>
